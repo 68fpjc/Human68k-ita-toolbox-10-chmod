@@ -2,15 +2,15 @@
 *
 * Itagaki Fumihiko 28-Aug-92  Create.
 * 1.0
-* Itagaki Fumihiko 06-Nov-92  strip_excessive_slashes‚ÌƒoƒOfix‚É”º‚¤‰ü”ÅD
+* Itagaki Fumihiko 06-Nov-92  strip_excessive_slashesã®ãƒã‚°fixã«ä¼´ã†æ”¹ç‰ˆï¼
 * 1.2
 * Itagaki Fumihiko 20-Jan-93  GETPDB -> lea $10(a0),a0
-* Itagaki Fumihiko 20-Jan-93  Usage: ƒƒbƒZ[ƒW‚ğC³D
-* Itagaki Fumihiko 22-Jan-93  ƒXƒ^ƒbƒN‚ğŠg’£D
-* Itagaki Fumihiko 26-Jan-93  -f ƒIƒvƒVƒ‡ƒ“‚ªw’è‚³‚ê‚Ä‚¢‚éê‡‚É‚ÍCƒtƒ@ƒCƒ‹ˆø”‚ª—^‚¦‚ç‚ê
-*                             ‚Ä‚¢‚È‚­‚Ä‚à³íI—¹‚·‚é‚æ‚¤‚É‚µ‚½D
+* Itagaki Fumihiko 20-Jan-93  Usage: ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’ä¿®æ­£ï¼
+* Itagaki Fumihiko 22-Jan-93  ã‚¹ã‚¿ãƒƒã‚¯ã‚’æ‹¡å¼µï¼
+* Itagaki Fumihiko 26-Jan-93  -f ã‚ªãƒ—ã‚·ãƒ§ãƒ³ãŒæŒ‡å®šã•ã‚Œã¦ã„ã‚‹å ´åˆã«ã¯ï¼Œãƒ•ã‚¡ã‚¤ãƒ«å¼•æ•°ãŒä¸ãˆã‚‰ã‚Œ
+*                             ã¦ã„ãªãã¦ã‚‚æ­£å¸¸çµ‚äº†ã™ã‚‹ã‚ˆã†ã«ã—ãŸï¼
 * 1.3
-* Itagaki Fumihiko 25-Aug-93  8i”’l•\Œ»‚ğ‹–‚µ‚½D
+* Itagaki Fumihiko 25-Aug-93  8é€²æ•°å€¤è¡¨ç¾ã‚’è¨±ã—ãŸï¼
 * 1.4
 *
 * Usage: chmod [ -cdfvR ] mode file ...
@@ -29,11 +29,11 @@
 .xref cat_pathname
 .xref strip_excessive_slashes
 
-MAXRECURSE	equ	64	*  ƒTƒuƒfƒBƒŒƒNƒgƒŠ‚ğíœ‚·‚é‚½‚ß‚ÉÄ‹A‚·‚é‰ñ”‚ÌãŒÀD
-				*  MAXDIR iƒpƒX–¼‚ÌƒfƒBƒŒƒNƒgƒŠ•” "/1/2/3/../" ‚Ì’·‚³j
-				*  ‚ª 64 ‚Å‚ ‚é‚©‚çA31‚Å[•ª‚Å‚ ‚é‚ªC
-				*  ƒVƒ“ƒ{ƒŠƒbƒNEƒŠƒ“ƒN‚ğl—¶‚µ‚Ä 64 ‚Æ‚·‚éD
-				*  ƒXƒ^ƒbƒN—Ê‚É‚©‚©‚í‚éD
+MAXRECURSE	equ	64	*  ã‚µãƒ–ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã‚’å‰Šé™¤ã™ã‚‹ãŸã‚ã«å†å¸°ã™ã‚‹å›æ•°ã®ä¸Šé™ï¼
+				*  MAXDIR ï¼ˆãƒ‘ã‚¹åã®ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªéƒ¨ "/1/2/3/../" ã®é•·ã•ï¼‰
+				*  ãŒ 64 ã§ã‚ã‚‹ã‹ã‚‰ã€31ã§å……åˆ†ã§ã‚ã‚‹ãŒï¼Œ
+				*  ã‚·ãƒ³ãƒœãƒªãƒƒã‚¯ãƒ»ãƒªãƒ³ã‚¯ã‚’è€ƒæ…®ã—ã¦ 64 ã¨ã™ã‚‹ï¼
+				*  ã‚¹ã‚¿ãƒƒã‚¯é‡ã«ã‹ã‹ã‚ã‚‹ï¼
 
 FLAG_c		equ	0
 FLAG_d		equ	1
@@ -63,8 +63,8 @@ start:
 		bra.s	start1
 		dc.b	'#HUPAIR',0
 start1:
-		lea	stack_bottom,a7			*  A7 := ƒXƒ^ƒbƒN‚Ì’ê
-		lea	$10(a0),a0			*  A0 : PDBƒAƒhƒŒƒX
+		lea	stack_bottom,a7			*  A7 := ã‚¹ã‚¿ãƒƒã‚¯ã®åº•
+		lea	$10(a0),a0			*  A0 : PDBã‚¢ãƒ‰ãƒ¬ã‚¹
 		move.l	a7,d0
 		sub.l	a0,d0
 		move.l	d0,-(a7)
@@ -72,26 +72,26 @@ start1:
 		DOS	_SETBLOCK
 		addq.l	#8,a7
 	*
-	*  ˆø”•À‚ÑŠi”[ƒGƒŠƒA‚ğŠm•Û‚·‚é
+	*  å¼•æ•°ä¸¦ã³æ ¼ç´ã‚¨ãƒªã‚¢ã‚’ç¢ºä¿ã™ã‚‹
 	*
-		lea	1(a2),a0			*  A0 := ƒRƒ}ƒ“ƒhƒ‰ƒCƒ“‚Ì•¶š—ñ‚Ìæ“ªƒAƒhƒŒƒX
-		bsr	strlen				*  D0.L := ƒRƒ}ƒ“ƒhƒ‰ƒCƒ“‚Ì•¶š—ñ‚Ì’·‚³
+		lea	1(a2),a0			*  A0 := ã‚³ãƒãƒ³ãƒ‰ãƒ©ã‚¤ãƒ³ã®æ–‡å­—åˆ—ã®å…ˆé ­ã‚¢ãƒ‰ãƒ¬ã‚¹
+		bsr	strlen				*  D0.L := ã‚³ãƒãƒ³ãƒ‰ãƒ©ã‚¤ãƒ³ã®æ–‡å­—åˆ—ã®é•·ã•
 		addq.l	#1,d0
 		bsr	malloc
 		bmi	insufficient_memory
 
-		movea.l	d0,a1				*  A1 := ˆø”•À‚ÑŠi”[ƒGƒŠƒA‚Ìæ“ªƒAƒhƒŒƒX
+		movea.l	d0,a1				*  A1 := å¼•æ•°ä¸¦ã³æ ¼ç´ã‚¨ãƒªã‚¢ã®å…ˆé ­ã‚¢ãƒ‰ãƒ¬ã‚¹
 	*
-	*  lndrv ‚ª‘g‚İ‚Ü‚ê‚Ä‚¢‚é‚©‚Ç‚¤‚©‚ğŒŸ¸‚·‚é
+	*  lndrv ãŒçµ„ã¿è¾¼ã¾ã‚Œã¦ã„ã‚‹ã‹ã©ã†ã‹ã‚’æ¤œæŸ»ã™ã‚‹
 	*
 		bsr	getlnenv
 		move.l	d0,lndrv
 	*
-	*  ƒIƒvƒVƒ‡ƒ“ˆø”‚ğ‰ğß‚·‚é
+	*  ã‚ªãƒ—ã‚·ãƒ§ãƒ³å¼•æ•°ã‚’è§£é‡ˆã™ã‚‹
 	*
-		bsr	DecodeHUPAIR			*  ˆø”‚ğƒfƒR[ƒh‚·‚é
-		movea.l	a1,a0				*  A0 : ˆø”ƒ|ƒCƒ“ƒ^
-		move.l	d0,d7				*  D7.L : ˆø”ƒJƒEƒ“ƒ^
+		bsr	DecodeHUPAIR			*  å¼•æ•°ã‚’ãƒ‡ã‚³ãƒ¼ãƒ‰ã™ã‚‹
+		movea.l	a1,a0				*  A0 : å¼•æ•°ãƒã‚¤ãƒ³ã‚¿
+		move.l	d0,d7				*  D7.L : å¼•æ•°ã‚«ã‚¦ãƒ³ã‚¿
 		moveq	#0,d5				*  D5.L : flags
 decode_opt_loop1:
 		movea.l	a0,a1
@@ -137,7 +137,7 @@ decode_opt_done:
 		subq.l	#1,d7
 		blo	too_few_args
 	*
-	*  ƒ‚[ƒhˆø”‚ğ‰ğß‚·‚é
+	*  ãƒ¢ãƒ¼ãƒ‰å¼•æ•°ã‚’è§£é‡ˆã™ã‚‹
 	*
 		move.b	(a0),d0
 		cmp.b	#'0',d0
@@ -280,7 +280,7 @@ decode_symbolic_mode_sub_set:
 		bra	decode_symbolic_mode_sub_loop
 
 decode_mode_done:
-		moveq	#0,d6				*  D6.W : ƒGƒ‰[EƒR[ƒh
+		moveq	#0,d6				*  D6.W : ã‚¨ãƒ©ãƒ¼ãƒ»ã‚³ãƒ¼ãƒ‰
 		tst.l	d7
 		beq	no_filearg
 chmod_loop:
@@ -322,14 +322,14 @@ chmod_error_exit_3:
 *      A0     filename
 *
 * RETURN
-*      D0-D2/A0-A3   ”j‰ó
+*      D0-D2/A0-A3   ç ´å£Š
 *****************************************************************
 chmod_one:
 		moveq	#0,d3
 chmod_recurse:
 	*
-	*  A0 ‚ªƒVƒ“ƒ{ƒŠƒbƒNEƒŠƒ“ƒN‚È‚çC‚»‚ÌQÆƒpƒX–¼‚ğC‚»‚¤‚Å‚È‚¯‚ê‚Î A0 ‚ğC
-	*  A1 ‚ÉƒZƒbƒg‚µC‚»‚Ì‘®«‚ğ D0.L ‚É“¾‚éD
+	*  A0 ãŒã‚·ãƒ³ãƒœãƒªãƒƒã‚¯ãƒ»ãƒªãƒ³ã‚¯ãªã‚‰ï¼Œãã®å‚ç…§ãƒ‘ã‚¹åã‚’ï¼Œãã†ã§ãªã‘ã‚Œã° A0 ã‚’ï¼Œ
+	*  A1 ã«ã‚»ãƒƒãƒˆã—ï¼Œãã®å±æ€§ã‚’ D0.L ã«å¾—ã‚‹ï¼
 	*
 		movea.l	a0,a1
 		bsr	lgetmode
@@ -349,9 +349,9 @@ chmod_recurse:
 		movea.l	LNDRV_getrealpath(a2),a2
 		lea	refname(pc),a1
 		clr.l	-(a7)
-		DOS	_SUPER				*  ƒX[ƒp[ƒoƒCƒUEƒ‚[ƒh‚ÉØ‚èŠ·‚¦‚é
+		DOS	_SUPER				*  ã‚¹ãƒ¼ãƒ‘ãƒ¼ãƒã‚¤ã‚¶ãƒ»ãƒ¢ãƒ¼ãƒ‰ã«åˆ‡ã‚Šæ›ãˆã‚‹
 		addq.l	#4,a7
-		move.l	d0,-(a7)			*  ‘O‚Ì SSP ‚Ì’l
+		move.l	d0,-(a7)			*  å‰ã® SSP ã®å€¤
 		movem.l	d2-d7/a0-a1/a4-a6,-(a7)
 		move.l	a0,-(a7)
 		move.l	a1,-(a7)
@@ -359,7 +359,7 @@ chmod_recurse:
 		addq.l	#8,a7
 		movem.l	(a7)+,d2-d7/a0-a1/a4-a6
 		move.l	d0,d1
-		DOS	_SUPER				*  ƒ†[ƒUEƒ‚[ƒh‚É–ß‚·
+		DOS	_SUPER				*  ãƒ¦ãƒ¼ã‚¶ãƒ»ãƒ¢ãƒ¼ãƒ‰ã«æˆ»ã™
 		addq.l	#4,a7
 		lea	msg_bad_link(pc),a2
 		tst.l	d1
@@ -371,7 +371,7 @@ chmod_recurse:
 		bpl	do_chmod_one
 chmod_nomode:
 	*
-	*  A1 ‚Ì‘®«‚Íæ“¾‚Å‚«‚È‚¢ -> A1 ‚Ì‚Ü‚Ü‚Å‚Í chmod ‚Å‚«‚È‚¢ -> nameck ‚ğ‚·D
+	*  A1 ã®å±æ€§ã¯å–å¾—ã§ããªã„ -> A1 ã®ã¾ã¾ã§ã¯ chmod ã§ããªã„ -> nameck ã‚’è©¦ã™ï¼
 	*
 		move.l	d0,d1
 		lea	nameckbuf(pc),a2
@@ -383,13 +383,13 @@ chmod_nomode:
 		bmi	perror
 
 		move.l	d1,d0
-		tst.b	67(a2)				*  basename ‚ª
-		bne	perror				*  ‚ ‚é‚Ì‚É‘®«‚ğæ“¾‚Å‚«‚È‚¢ ... ƒGƒ‰[
+		tst.b	67(a2)				*  basename ãŒ
+		bne	perror				*  ã‚ã‚‹ã®ã«å±æ€§ã‚’å–å¾—ã§ããªã„ ... ã‚¨ãƒ©ãƒ¼
 
-		tst.b	3(a2)				*  ƒ‹[ƒgEƒfƒBƒŒƒNƒgƒŠ‚Å‚Í
-		bne	chmod_nomode_1			*  ‚È‚¢ ... ‚±‚ÌƒfƒBƒŒƒNƒgƒŠ–¼‚Å chmod ‚·‚é
+		tst.b	3(a2)				*  ãƒ«ãƒ¼ãƒˆãƒ»ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã§ã¯
+		bne	chmod_nomode_1			*  ãªã„ ... ã“ã®ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªåã§ chmod ã™ã‚‹
 		*
-		*  w’è‚³‚ê‚½‚Ì‚Íƒ‹[ƒgEƒfƒBƒŒƒNƒgƒŠ‚Å‚ ‚Á‚½
+		*  æŒ‡å®šã•ã‚ŒãŸã®ã¯ãƒ«ãƒ¼ãƒˆãƒ»ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã§ã‚ã£ãŸ
 		*
 		lea	msg_cannot_chmod_root(pc),a2
 		bsr	werror_myname_word_colon_msg_f
@@ -404,14 +404,14 @@ chmod_nomode_1:
 		bmi	perror
 do_chmod_one:
 	*
-	*  A1 ‚ğ chmod ‚·‚é
+	*  A1 ã‚’ chmod ã™ã‚‹
 	*
 		move.b	d0,d2
 		bchg	#MODEBIT_RDO,d0
 		and.b	mode_mask,d0
 		or.b	mode_plus,d0
 		bchg	#MODEBIT_RDO,d0
-		move.w	d0,d1				*  D1.W : •ÏXŒã‚Ìƒ‚[ƒh
+		move.w	d0,d1				*  D1.W : å¤‰æ›´å¾Œã®ãƒ¢ãƒ¼ãƒ‰
 		lea	msg_retained(pc),a2
 		eor.b	d1,d2
 		and.b	#(MODEVAL_ARC|MODEVAL_SYS|MODEVAL_HID|MODEVAL_RDO|MODEVAL_EXE),d2
@@ -505,7 +505,7 @@ chmod_directory_contents:
 		beq	chmod_one_return
 
 		lea	msg_dir_too_deep(pc),a2
-		addq.l	#1,d3				*  ƒfƒBƒŒƒNƒgƒŠ‚Ì[‚³‚ğƒCƒ“ƒNƒŠƒƒ“ƒg
+		addq.l	#1,d3				*  ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã®æ·±ã•ã‚’ã‚¤ãƒ³ã‚¯ãƒªãƒ¡ãƒ³ãƒˆ
 		cmp.l	#MAXRECURSE,d3
 		bhi	werror_myname_word_colon_msg
 
@@ -526,7 +526,7 @@ chmod_recurse_stacksize	equ	chmod_autosize+4*4	* 4*4 ... A2/A3/A6/PC
 		*  A2 : chmod_pathbuf : (A0)/*.*
 		*                            |
 		*                            A3
-		move.w	#MODEVAL_ALL,-(a7)		*  ‚·‚×‚Ä‚ÌƒGƒ“ƒgƒŠ‚ğŒŸõ‚·‚é
+		move.w	#MODEVAL_ALL,-(a7)		*  ã™ã¹ã¦ã®ã‚¨ãƒ³ãƒˆãƒªã‚’æ¤œç´¢ã™ã‚‹
 		move.l	a2,-(a7)
 		pea	chmod_filesbuf(a6)
 		DOS	_FILES
@@ -678,27 +678,27 @@ perror_table:
 	dc.w	msg_error-sys_errmsgs			*  25 (-26)
 
 sys_errmsgs:
-msg_error:		dc.b	'ƒGƒ‰[',0
-msg_nofile:		dc.b	'‚±‚Ì‚æ‚¤‚Èƒtƒ@ƒCƒ‹‚âƒfƒBƒŒƒNƒgƒŠ‚Í‚ ‚è‚Ü‚¹‚ñ',0
-msg_bad_name:		dc.b	'–¼‘O‚ª–³Œø‚Å‚·',0
-msg_bad_drive:		dc.b	'ƒhƒ‰ƒCƒu‚Ìw’è‚ª–³Œø‚Å‚·',0
+msg_error:		dc.b	'ã‚¨ãƒ©ãƒ¼',0
+msg_nofile:		dc.b	'ã“ã®ã‚ˆã†ãªãƒ•ã‚¡ã‚¤ãƒ«ã‚„ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã¯ã‚ã‚Šã¾ã›ã‚“',0
+msg_bad_name:		dc.b	'åå‰ãŒç„¡åŠ¹ã§ã™',0
+msg_bad_drive:		dc.b	'ãƒ‰ãƒ©ã‚¤ãƒ–ã®æŒ‡å®šãŒç„¡åŠ¹ã§ã™',0
 
 msg_myname:			dc.b	'chmod'
 msg_colon:			dc.b	': ',0
-msg_no_memory:			dc.b	'ƒƒ‚ƒŠ‚ª‘«‚è‚Ü‚¹‚ñ',CR,LF,0
-msg_bad_arg:			dc.b	'ˆø”‚ª³‚µ‚­‚ ‚è‚Ü‚¹‚ñ',0
-msg_too_few_args:		dc.b	'ˆø”‚ª‘«‚è‚Ü‚¹‚ñ',0
-msg_too_long_pathname:		dc.b	'ƒpƒX–¼‚ª’·‰ß‚¬‚Ü‚·',0
-msg_cannot_chmod_root:		dc.b	'ƒ‹[ƒgEƒfƒBƒŒƒNƒgƒŠ‚Ì‘®«‚Í•ÏX‚Å‚«‚Ü‚¹‚ñ',0
-msg_cannot_access_link:		dc.b	'lndrv‚ª‘g‚İ‚Ü‚ê‚Ä‚¢‚È‚¢‚½‚ßƒVƒ“ƒ{ƒŠƒbƒNEƒŠƒ“ƒNQÆƒtƒ@ƒCƒ‹‚ÉƒAƒNƒZƒX‚Å‚«‚Ü‚¹‚ñ',0
-msg_bad_link:			dc.b	'ˆÙí‚ÈƒVƒ“ƒ{ƒŠƒbƒNEƒŠƒ“ƒN‚Å‚·',0
-msg_dir_too_deep:		dc.b	'ƒfƒBƒŒƒNƒgƒŠ‚ª[‰ß‚¬‚Äˆ—‚Å‚«‚Ü‚¹‚ñ',0
-msg_no_mode_ha:			dc.b	' ‚Ì‘®«‚Í ',0
-msg_retained:			dc.b	' ‚Ì‚Ü‚Ü‚ÉˆÛ‚³‚ê‚Ü‚µ‚½',CR,LF,0
-msg_changed:			dc.b	' ‚É•ÏX‚³‚ê‚Ü‚µ‚½',CR,LF,0
+msg_no_memory:			dc.b	'ãƒ¡ãƒ¢ãƒªãŒè¶³ã‚Šã¾ã›ã‚“',CR,LF,0
+msg_bad_arg:			dc.b	'å¼•æ•°ãŒæ­£ã—ãã‚ã‚Šã¾ã›ã‚“',0
+msg_too_few_args:		dc.b	'å¼•æ•°ãŒè¶³ã‚Šã¾ã›ã‚“',0
+msg_too_long_pathname:		dc.b	'ãƒ‘ã‚¹åãŒé•·éãã¾ã™',0
+msg_cannot_chmod_root:		dc.b	'ãƒ«ãƒ¼ãƒˆãƒ»ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã®å±æ€§ã¯å¤‰æ›´ã§ãã¾ã›ã‚“',0
+msg_cannot_access_link:		dc.b	'lndrvãŒçµ„ã¿è¾¼ã¾ã‚Œã¦ã„ãªã„ãŸã‚ã‚·ãƒ³ãƒœãƒªãƒƒã‚¯ãƒ»ãƒªãƒ³ã‚¯å‚ç…§ãƒ•ã‚¡ã‚¤ãƒ«ã«ã‚¢ã‚¯ã‚»ã‚¹ã§ãã¾ã›ã‚“',0
+msg_bad_link:			dc.b	'ç•°å¸¸ãªã‚·ãƒ³ãƒœãƒªãƒƒã‚¯ãƒ»ãƒªãƒ³ã‚¯ã§ã™',0
+msg_dir_too_deep:		dc.b	'ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªãŒæ·±éãã¦å‡¦ç†ã§ãã¾ã›ã‚“',0
+msg_no_mode_ha:			dc.b	' ã®å±æ€§ã¯ ',0
+msg_retained:			dc.b	' ã®ã¾ã¾ã«ç¶­æŒã•ã‚Œã¾ã—ãŸ',CR,LF,0
+msg_changed:			dc.b	' ã«å¤‰æ›´ã•ã‚Œã¾ã—ãŸ',CR,LF,0
 msg_usage:			dc.b	CR,LF
-				dc.b	'g—p–@:  chmod [-cdfvR] <‘®«•ÏX®> <ƒtƒ@ƒCƒ‹> ...',CR,LF,CR,LF
-				dc.b	'         ‘®«•ÏX®: {[ugoa]{{+-=}[ashrwx]}...}[,...] ‚Ü‚½‚Í 8i”’l•\Œ»'
+				dc.b	'ä½¿ç”¨æ³•:  chmod [-cdfvR] <å±æ€§å¤‰æ›´å¼> <ãƒ•ã‚¡ã‚¤ãƒ«> ...',CR,LF,CR,LF
+				dc.b	'         å±æ€§å¤‰æ›´å¼: {[ugoa]{{+-=}[ashrwx]}...}[,...] ã¾ãŸã¯ 8é€²æ•°å€¤è¡¨ç¾'
 msg_newline:			dc.b	CR,LF,0
 dos_wildcard_all:		dc.b	'*.*',0
 *****************************************************************
@@ -712,8 +712,8 @@ mode_mask:		ds.b	1
 mode_plus:		ds.b	1
 .even
 	ds.b	16384+chmod_recurse_stacksize*(MAXRECURSE+1)
-	*  •K—v‚ÈƒXƒ^ƒbƒN—Ê‚ÍCÄ‹A‚Ì“x‚ÉÁ”ï‚³‚ê‚éƒXƒ^ƒbƒN—Ê‚Æ‚»‚Ì‰ñ”‚Æ‚ÅŒˆ‚Ü‚éD
-	*  ‚±‚Ì‘¼‚Éƒ}[ƒWƒ“‚ÆƒX[ƒp[ƒoƒCƒUEƒXƒ^ƒbƒN‚Æ‚ğŒ“‚Ë‚Ä16KBŠm•Û‚µ‚Ä‚¨‚­D
+	*  å¿…è¦ãªã‚¹ã‚¿ãƒƒã‚¯é‡ã¯ï¼Œå†å¸°ã®åº¦ã«æ¶ˆè²»ã•ã‚Œã‚‹ã‚¹ã‚¿ãƒƒã‚¯é‡ã¨ãã®å›æ•°ã¨ã§æ±ºã¾ã‚‹ï¼
+	*  ã“ã®ä»–ã«ãƒãƒ¼ã‚¸ãƒ³ã¨ã‚¹ãƒ¼ãƒ‘ãƒ¼ãƒã‚¤ã‚¶ãƒ»ã‚¹ã‚¿ãƒƒã‚¯ã¨ã‚’å…¼ã­ã¦16KBç¢ºä¿ã—ã¦ãŠãï¼
 .even
 stack_bottom:
 *****************************************************************

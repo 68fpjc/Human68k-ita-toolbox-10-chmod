@@ -1,8 +1,8 @@
-MANIFEST       ���̃t�@�C��
-README         �܂��ŏ��ɂ��ǂ݉�����
-NOTICE         �Ō��Ƌ����ɂ��Ă̍�����
-DIRECTORY      ITA���i���X�g
-HUPAIR         HUPAIR�ɂ��ẴC���t�H���[�V����
-CHANGES        chmod�̃��f���`�F���W�̗���
-chmod.1        chmod�̃}�j���A��
-chmod.x        chmod���s�t�@�C��
+MANIFEST       このファイル
+README         まず最初にお読み下さい
+NOTICE         版権と許諾についての告示書
+DIRECTORY      ITA製品リスト
+HUPAIR         HUPAIRについてのインフォメーション
+CHANGES        chmodのモデルチェンジの履歴
+chmod.1        chmodのマニュアル
+chmod.x        chmod実行ファイル
